@@ -1,0 +1,19 @@
+<h1>Tickets</h1>
+
+<%= form_with url: tickets_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :start_date %>
+    <%= date_field_tag :start_date, params[:start_date] %>
+  </div>
+  <div>
+    <%= label_tag :end_date %>
+    <%= date_field_tag :end_date, params[:end_date] %>
+  </div>
+  <%= submit_tag "Filtrar" %>
+<% end %>
+
+<ul>
+  <% @tickets.each do |ticket| %>
+    <li><%= ticket.title %> - <%= ticket.created_at.strftime("%Y-%m-%d") %></li>
+  <% end %>
+</ul>
